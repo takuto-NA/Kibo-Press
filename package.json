@@ -1,0 +1,94 @@
+{
+  "name": "kibo-press",
+  "displayName": "Kibo-Press",
+  "description": "Markdown を丁寧な体裁の PDF に変換する（Pandoc + Typst）",
+  "version": "0.1.0",
+  "publisher": "kibo-press",
+  "icon": "media/icon.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/example/kibo-press.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "kibo-press.exportPdf",
+        "title": "Kibo-Press: Export PDF"
+      },
+      {
+        "command": "kibo-press.exportPdfWithTheme",
+        "title": "Kibo-Press: Export PDF with Theme"
+      },
+      {
+        "command": "kibo-press.openPreview",
+        "title": "Kibo-Press: Open Preview"
+      },
+      {
+        "command": "kibo-press.createDocumentConfig",
+        "title": "Kibo-Press: Create Document Config"
+      }
+    ],
+    "configuration": {
+      "title": "Kibo-Press",
+      "properties": {
+        "kiboPress.defaultTheme": {
+          "type": "string",
+          "default": "business-report",
+          "description": "既定テーマ ID（themes ディレクトリ名）"
+        },
+        "kiboPress.defaultOutputDirectory": {
+          "type": "string",
+          "default": "",
+          "description": "空のときは Markdown と同じディレクトリへ出力"
+        },
+        "kiboPress.openPdfAfterExport": {
+          "type": "boolean",
+          "default": false,
+          "description": "エクスポート成功後に PDF を既定アプリで開く"
+        },
+        "kiboPress.pandocPath": {
+          "type": "string",
+          "default": "",
+          "description": "pandoc 実行ファイルのパス（空なら PATH から解決）"
+        },
+        "kiboPress.typstPath": {
+          "type": "string",
+          "default": "",
+          "description": "typst 実行ファイルのパス（空なら PATH から解決）"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "vitest run",
+    "package": "vsce package",
+    "export:sample": "npm run compile && node out/cli/exportCli.js --input examples/sample.md --output out/sample.pdf",
+    "export:demo": "npm run compile && node out/cli/exportCli.js --input docs/demo.md --output media/kibo-press-demo.pdf"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "yaml": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.2.1",
+    "pdf-parse": "^1.1.1",
+    "typescript": "^5.7.2",
+    "vitest": "^3.0.2"
+  }
+}

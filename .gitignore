@@ -1,0 +1,10 @@
+node_modules/
+.kibo-press/
+out/
+dist/
+*.vsix
+.DS_Store
+*.log
+coverage/
+.env
+.env.*

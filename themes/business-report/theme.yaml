@@ -1,0 +1,15 @@
+# 責務: business-report テーマの既定メタデータ（Pandoc に渡すキーの初期値）
+id: business-report
+displayName: "Business Report"
+defaults:
+  papersize: a4
+  fontsize: 11
+  toc: true
+  toc-depth: 3
+  kibo_cover: false
+  mainfont: "Noto Serif CJK JP"
+  sansfont: "Noto Sans CJK JP"
+  codefont: "Noto Sans Mono"
+  margin_x_mm: 25
+  margin_y_mm: 22
+  lang: ja
