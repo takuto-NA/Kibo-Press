@@ -1,7 +1,7 @@
 // 責務: business-report の紙面規則を定義し、本文表示の枠組みを提供する
 
 #set page(
-  paper: "a4",
+  paper: "$papersize$",
   margin: (
     x: $margin_x_mm$mm,
     y: $margin_y_mm$mm,
@@ -28,7 +28,7 @@
   lang: "$lang$",
 )
 
-#set par(leading: 0.75em)
+#set par(leading: $par_leading_em$em)
 #set heading(numbering: "1.1")
 
 #show heading.where(level: 1): it => block(

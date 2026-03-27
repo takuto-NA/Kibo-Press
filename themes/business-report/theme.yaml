@@ -2,8 +2,9 @@
 id: business-report
 displayName: "Business Report"
 defaults:
-  papersize: a4
+  papersize: "a4"
   fontsize: 11
+  par_leading_em: 0.75
   toc: true
   toc-depth: 3
   kibo_cover: false

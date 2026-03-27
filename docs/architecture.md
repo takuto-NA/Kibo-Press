@@ -4,10 +4,14 @@
 
 | レイヤー | 責務 |
 |----------|------|
-| VS Code 拡張（`src/extension.ts`、commands、services） | エディタ連携、設定マージ入力、通知、最後の PDF パス保持 |
-| パイプライン（`src/pipeline/*`） | Pandoc / Typst の引数組み立て、プロセス実行、ログ整形 |
-| CLI（`scripts/export-cli.ts`） | 拡張なしでの結合テスト・手動検証用エントリ |
+| VS Code 拡張（`src/extension.ts`、commands、services） | エディタ連携、出力先提案、通知、最後の PDF パス保持、`kiboPress.*` の読み取り |
+| パイプライン（`src/pipeline/*`） | front matter とテーマ既定のマージ、Pandoc / Typst の引数組み立て、中間 `.typ` の生成、成果物パス制御 |
+| エンジン（`src/engine/*`） | 外部プロセス実行の共通処理（`runExecutable`、実行ファイルの存在確認・パス解決の補助） |
+| サービス（`src/services/engineService.ts` など） | VS Code 設定に基づく `pandoc` / `typst` 実行パスの解決 |
+| CLI（`src/cli/exportCli.ts` → `npm run export:sample` 等） | 拡張なしでの結合テスト・手動検証用エントリ |
 | テーマ（`themes/<id>/`） | `theme.yaml` 既定、`pandoc-template.typ`、補助 `.typ` |
+
+**補足:** サブプロセスの起動そのものは `src/engine/runExecutable.ts` に集約し、パイプラインは「いつ・何を渡すか」を担当する。
 
 ## 2. データフロー
 
@@ -35,9 +39,17 @@ flowchart LR
 
 ## 4. 設定マージ
 
-優先順位: **front matter → workspace `kiboPress` → user `kiboPress` → `theme.yaml`**
+`mergeLayeredDocumentMetadata`（[`src/pipeline/mergeLayeredDocumentMetadata.ts`](../src/pipeline/mergeLayeredDocumentMetadata.ts)）の**上書き優先順位**は次のとおりです。
 
-拡張は VS Code API で workspace/user を読み、Markdown 本文から front matter をパースし、テーマファイルを読み込んでマージする。
+**優先順位（高い順）:** front matter → workspace 由来のメタデータ → user 由来のメタデータ → `theme.yaml` の `defaults`
+
+**MVP での実装状況:**
+
+- **front matter** と **`theme.yaml`** はマージに反映される。
+- **workspace / user からドキュメントメタデータ（余白・フォント等）を注入する処理**は未実装であり、[`src/services/configService.ts`](../src/services/configService.ts) の `buildWorkspaceLevelDocumentMetadata` / `buildUserLevelDocumentMetadata` は空オブジェクトを返す（将来拡張用の入口）。
+- **Export PDF with Theme** 実行時は、テーマ ID の上書きのみ `workspaceLevelDocumentMetadata` 経由で渡される（[`src/services/exportService.ts`](../src/services/exportService.ts)）。
+
+利用者向けの「どこを編集すればよいか」は [カスタマイズ](customization.md) を正とする。
 
 ## 5. 日本語フォント
 
@@ -47,7 +59,7 @@ flowchart LR
 - `Noto Sans CJK JP`
 - `Noto Sans Mono`
 
-**未インストール時:** Typst は別フォントにフォールバックし版面が変わる。README に Google Noto / OS パッケージでの導入手順を記載する。
+**未インストール時:** Typst は別フォントにフォールバックし版面が変わる。導入の考え方は [README の必要環境](../README.md) および [カスタマイズのフォント](customization.md#フォントを変えたい) を参照する。
 
 ## 6. PDF の回帰検証（自動テスト）
 
@@ -55,6 +67,8 @@ flowchart LR
 
 - PDF が生成される
 - ページ数・抽出テキスト・主要キーワードが閾値を満たす
+
+**通常の `npm test`:** Pandoc / Typst を使わない単体・回帰テストが主。結合テストは環境変数で有効化する（[README](../README.md#テスト)）。
 
 ## 7. 主要エラーコード（論理）
 

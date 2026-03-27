@@ -60,10 +60,12 @@ Kibo-Press はこれを解消し、Markdown の軽快さを保ちながら、提
 | ソース | 用途 |
 |--------|------|
 | Markdown front matter | ドキュメント単位（タイトル、著者、目次、テーマ名など） |
-| VS Code `kiboPress.*` 設定 | ワークスペース／ユーザー既定 |
+| VS Code `kiboPress.*` 設定 | 既定テーマ・出力先・ツールパス・エクスポート後の自動オープンなど（文書メタデータの注入は MVP では未実装） |
 | `themes/<name>/theme.yaml` | テーマ既定（紙面・フォント名など） |
 
 MVP では **`kibo-press.yaml` は導入しない**。
+
+利用者向けのキー一覧・体裁の変え方は **[カスタマイズ](customization.md)** を正とする。
 
 ### 5.3 設定マージ優先順位
 
@@ -71,6 +73,8 @@ MVP では **`kibo-press.yaml` は導入しない**。
 2. ワークスペース設定  
 3. ユーザー設定  
 4. テーマ `theme.yaml` 既定  
+
+実装の詳細と MVP での差分（workspace / user からのメタデータ注入は現状空）は [アーキテクチャの設定マージ](architecture.md#4-設定マージ) を参照する。
 
 ### 5.4 Open Preview
 

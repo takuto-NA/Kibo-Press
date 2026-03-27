@@ -1,5 +1,9 @@
 /**
  * 責務: Pandoc + Typst が利用可能な環境での結合テスト（任意実行）
+ *
+ * 環境変数 KIBO_PRESS_RUN_INTEGRATION が "1" でない場合、本ファイルのテストは
+ * 早期リターンし、外部ツールを呼び出さない。通常の npm test では Pandoc/Typst
+ * 連携が検証されたことにはならない点に注意する。
  */
 
 import * as fs from "node:fs";

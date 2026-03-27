@@ -31,6 +31,13 @@ describe("business-report regression", () => {
     );
   });
 
+  it("keeps papersize and par_leading_em placeholders in the Typst template", () => {
+    const templateText = fs.readFileSync(TEMPLATE_ABSOLUTE_PATH, "utf8");
+
+    expect(templateText).toContain('paper: "$papersize$"');
+    expect(templateText).toContain("#set par(leading: $par_leading_em$em)");
+  });
+
   it("starts the sample document with a level-1 heading", () => {
     const sampleMarkdownText = fs.readFileSync(
       SAMPLE_MARKDOWN_ABSOLUTE_PATH,

@@ -19,6 +19,7 @@ kibo_theme: "business-report"
 kibo_cover: false
 toc: true
 ---
+<!-- Kibo-Press: 体裁の調整は docs/customization.md を参照 -->
 
 `;
 
