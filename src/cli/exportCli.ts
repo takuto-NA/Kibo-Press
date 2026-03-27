@@ -201,6 +201,7 @@ function buildHelpText(): string {
     "",
     "Examples:",
     "  npm run export:sample",
+    "  npm run export:examples",
   ].join("\n");
 }
 

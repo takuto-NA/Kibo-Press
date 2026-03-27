@@ -80,6 +80,8 @@ Kibo-Press は **MVP（0.1.x）段階**の拡張です。
    - **Kibo-Press: Open Preview** — 直近の PDF を既定アプリで開く
    - **Kibo-Press: Create Document Config** — front matter の雛形を先頭に挿入
 
+「今できること」全体と編集結果の対応は [Examples（ガイド）](examples/README.md) と [生成済み PDF（代表例）](media/examples/) を参照してください。
+
 ## コマンド一覧（拡張）
 
 | コマンド | 説明 |
@@ -93,6 +95,12 @@ Kibo-Press は **MVP（0.1.x）段階**の拡張です。
 
 ```bash
 npm run export:sample
+```
+
+Examples の代表 PDF を一括生成する場合（Pandoc / Typst が PATH に必要）:
+
+```bash
+npm run export:examples
 ```
 
 デモ用の紹介資料 PDF を生成する場合:
@@ -143,6 +151,7 @@ npm test
 
 ## ドキュメント
 
+- [Examples（できることと編集の対応）](examples/README.md)
 - [カスタマイズ（体裁・テーマ）](docs/customization.md)
 - [要件](docs/spec.md)
 - [アーキテクチャ](docs/architecture.md)

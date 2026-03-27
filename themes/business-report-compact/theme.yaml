@@ -1,0 +1,16 @@
+# 責務: business-report と同じ Typst テンプレを使い、既定メタデータだけを詰めた比較用テーマ
+id: business-report-compact
+displayName: "Business Report (Compact)"
+defaults:
+  papersize: "a4"
+  fontsize: 10
+  par_leading_em: 0.65
+  toc: true
+  toc-depth: 3
+  kibo_cover: false
+  mainfont: "Noto Serif CJK JP"
+  sansfont: "Noto Sans CJK JP"
+  codefont: "Noto Sans Mono"
+  margin_x_mm: 18
+  margin_y_mm: 16
+  lang: ja

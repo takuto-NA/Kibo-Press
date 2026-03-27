@@ -9,6 +9,7 @@ import {
   formatKiboPressNotificationMessage,
 } from "../ui/notifications";
 
+// ガード: examples/document-config-template.md の先頭ブロックと同期すること（挿入内容の単一情報源として参照）
 const MARKDOWN_FRONT_MATTER_TEMPLATE = String.raw`---
 title: "文書タイトル"
 subtitle: "サブタイトル（任意）"

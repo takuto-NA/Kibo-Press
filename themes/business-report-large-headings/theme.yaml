@@ -1,0 +1,16 @@
+# 責務: business-report と同じ既定メタデータで、Typst テンプレの見出し強調だけを変えた比較用テーマ
+id: business-report-large-headings
+displayName: "Business Report (Large Headings)"
+defaults:
+  papersize: "a4"
+  fontsize: 11
+  par_leading_em: 0.75
+  toc: true
+  toc-depth: 3
+  kibo_cover: false
+  mainfont: "Noto Serif CJK JP"
+  sansfont: "Noto Sans CJK JP"
+  codefont: "Noto Sans Mono"
+  margin_x_mm: 25
+  margin_y_mm: 22
+  lang: ja

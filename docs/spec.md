@@ -100,7 +100,7 @@ Typst で次を既定候補とする（未インストール時は README / arch
 
 ### B. 文書テーマ
 
-- 少なくとも `business-report` テーマ
+- 少なくとも `business-report` テーマ（ほか、同梱の比較用テーマあり。一覧は [examples/README.md](../examples/README.md)）
 - ページ、余白、フォント、見出し、段落、表、コード、ヘッダ／フッタ、ページ番号を制御
 
 ### C. front matter / VS Code 設定

@@ -77,7 +77,8 @@
     "test": "vitest run",
     "package": "vsce package",
     "export:sample": "npm run compile && node out/cli/exportCli.js --input examples/sample.md --output out/sample.pdf",
-    "export:demo": "npm run compile && node out/cli/exportCli.js --input docs/demo.md --output media/kibo-press-demo.pdf"
+    "export:demo": "npm run compile && node out/cli/exportCli.js --input docs/demo.md --output media/kibo-press-demo.pdf",
+    "export:examples": "npm run compile && node scripts/export-examples.cjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

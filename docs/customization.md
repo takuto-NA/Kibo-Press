@@ -4,6 +4,8 @@
 
 利用者が **PDF の体裁をどこで変えるか** を一箇所にまとめたガイドです。実装の優先順位・未実装の範囲は [アーキテクチャの設定マージ](architecture.md#4-設定マージ) に合わせます。
 
+編集の具体例と生成 PDF は [Examples の README](../examples/README.md) にまとめています。
+
 ## 設定の優先順位（上書きが強い順）
 
 1. Markdown の **front matter**
